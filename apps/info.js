@@ -76,14 +76,12 @@ export class info extends plugin {
                 else {
                     const group_id = await getGroup_id({ group_id: where[type] })
                     if (group_id && group_id == e.group_id) {
-                        result = '修改失败,未包含此真实id: ' + where[type]
                     } else {
                         result = `请在ID为[${custom}]的群中向Bot发送\n\n#ws接受群绑定 ${where[type]}`
                         bind[custom] = where[type]
                     }
                 }
             } else {
-                result = '修改失败,未包含群真实id'
             }
         } else {
             if (e.isMaster) {
@@ -91,7 +89,6 @@ export class info extends plugin {
             } else {
                 const user_id = await getUser_id({ user_id: where[type] })
                 if (user_id && user_id == e.user_id) {
-                    result = '修改失败,未包含此真实id: ' + where[type]
                 } else {
                     result = `请用ID为[${custom}]的账号向Bot发送\n\n#ws接受绑定 ${where[type]}`
                     bind[custom] = where[type]
