@@ -29,16 +29,23 @@ export class info extends plugin {
 
     }
     async getId(e) {
-        const user_id = await getUser_id({ user_id: e.user_id })
+        const user_id = await getUser_id({ user_id: e.user_id });
+        
+        // 判断用户真实 ID 和虚拟 ID 是否相等
+        if (e.user_id === user_id) {
+            return; // 如果相等，直接退出函数
+        }
+    
         const msg = [
             '用户真实id:',
             e.user_id,
             '',
             '用户虚拟id:',
             user_id,
-        ]
+        ];
+    
         if (e.group_id) {
-            const group_id = await getGroup_id({ group_id: e.group_id })
+            const group_id = await getGroup_id({ group_id: e.group_id });
             msg.push(...[
                 '',
                 '群真实id:',
@@ -46,11 +53,10 @@ export class info extends plugin {
                 '',
                 '群虚拟id:',
                 group_id,
-
-            ])
+            ]);
         }
-        e.reply(msg.join('\n'), true)
-        return true
+    
+        e.reply(msg.join('\n'), true);
     }
 
     async setId(e) {
