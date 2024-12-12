@@ -96,7 +96,7 @@ export class info extends plugin {
                 const user_id = await getUser_id({ user_id: where[type] })
                 if (user_id && user_id == e.user_id) {
                 } else {
-                    result = `请用ID为[${custom}]的账号向Bot发送\n\n#ws接受绑定 ${where[type]}`
+                    result = `请用QQ为[${custom}]的账号在本群直接发送以下内容⬇️\n\n#ws接受绑定 ${where[type]}`
                     bind[custom] = where[type]
                 }
             }
